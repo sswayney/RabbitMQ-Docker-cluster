@@ -18,6 +18,7 @@ docker run -d \
     -e RABBITMQ_NODENAME="rabbit1" \
     --volume=(pwd)/rabbitmq.config:/etc/rabbitmq/rabbitmq.config \
     --volume=(pwd)/definitions.json:/etc/rabbitmq/definitions.json \
+    --volume=(pwd)/enabled_plugins:/etc/rabbitmq/enabled_plugins \
     --publish="4369:4369" \
     --publish="5671:5671" \
     --publish="5672:5672" \
@@ -35,6 +36,7 @@ docker run -d \
     -e RABBITMQ_NODENAME="rabbit2" \
     --volume=(pwd)/rabbitmq.config:/etc/rabbitmq/rabbitmq.config \
     --volume=(pwd)/definitions.json:/etc/rabbitmq/definitions.json \
+    --volume=(pwd)/enabled_plugins:/etc/rabbitmq/enabled_plugins \
     --link="rabbit1:rabbit1" \
     rabbitmq:3-management
 ```
@@ -48,6 +50,7 @@ docker run -d \
     -e RABBITMQ_NODENAME="rabbit3" \
     --volume=(pwd)/rabbitmq.config:/etc/rabbitmq/rabbitmq.config \
     --volume=(pwd)/definitions.json:/etc/rabbitmq/definitions.json \
+    --volume=(pwd)/enabled_plugins:/etc/rabbitmq/enabled_plugins \
     --link="rabbit1:rabbit1" \
     --link="rabbit2:rabbit2" \
     rabbitmq:3-management
